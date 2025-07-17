@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
-use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class TestimoniController extends Controller
 {
@@ -35,26 +35,17 @@ class TestimoniController extends Controller
 
             $data = array_combine($headers, $row);
 
+            // Convert rating to float or null if not numeric
+            $rating = isset($data['rating']) && is_numeric($data['rating']) ? (float) $data['rating'] : null;
+
             return [
                 'nama'   => $data['nama'] ?? 'Anonim',
                 'pesan'  => $data['pesan'] ?? '',
-                'rating' => $data['rating'] ?? 'N/A',
+                'rating' => $rating, // Use null instead of 'N/A' for non-numeric ratings
+                'date'   => $data['date'] ?? null, // Include date if available in CSV
             ];
         })->filter();
 
         return view('testimoni.index', compact('entries'));
-    }
-
-    // Tambahan agar bisa akses form pemesanan dari keranjang
-    public function formFromCart(Cart $cart)
-    {
-        if ($cart->user_id !== auth()->id()) {
-            abort(403);
-        }
-
-        $menu = $cart->menu;
-        $jumlah = $cart->jumlah;
-
-        return view('order.form', compact('menu', 'jumlah'));
     }
 }

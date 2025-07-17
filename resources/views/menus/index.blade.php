@@ -13,7 +13,9 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse ($menus as $menu)
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col">
-                    <img src="{{ asset('storage/' . $menu->gambar) }}" alt="{{ $menu->nama }}" class="w-full h-48 object-cover">
+                    <img src="{{ asset($menu->gambar ? 'storage/' . $menu->gambar : 'storage/images/fallback.jpg') }}" 
+                         alt="{{ $menu->nama }}" 
+                         class="w-full h-48 object-cover">
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ $menu->nama }}</h3>
                         <p class="text-gray-600 mb-4 flex-1">{{ Str::limit($menu->deskripsi, 80) }}</p>
@@ -33,32 +35,44 @@
                                     <i class="fas fa-utensils mr-1"></i> Order
                                 </a>
                             @else
-                                <a href="{{ route('auth.login') }}?redirect={{ route('order.form', $menu->id) }}?source=menu"
+                                <a href="{{ route('auth.login') }}?redirect={{ urlencode(route('order.form', $menu->id) . '?source=menu') }}"
                                    class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
                                     <i class="fas fa-utensils mr-1"></i> Order
-                                </span>
+                                </a>
                             @endauth
 
                             <!-- Add to Cart Button -->
-                            <form action="{{ route('cart.add', $menu->id) }}" method="POST">
-                                @csrf
-                                <input="hidden" name="jumlah" value="1">
-                                <button type="submit"
-                                        class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
-                                    <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
-                                </button>
-                            </form>
+                            @auth
+                                <form action="{{ route('cart.add', $menu->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="jumlah" value="1">
+                                    <button type="submit"
+                                            class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
+                                        <i class="fas fa-shopping-cart mr-1"></i> Add to Cart
+                                    </button>
+                                </form>
+                            @else
+                                <a href="{{ route('auth.login') }}?redirect={{ urlencode(route('cart.add', $menu->id)) }}"
+                                   class="w-full bg-pink-300 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition cursor-not-allowed opacity-75">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Login to Add to Cart
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 </div>
             @empty
-                <p class="col-span-full text-center text-gray-500">Belum ada menu tersedia.</p>
+                <div class="col-span-full text-center bg-white rounded-xl shadow-md p-8">
+                    <p class="text-gray-500 text-lg">Belum ada menu tersedia. 😔</p>
+                    <p class="text-gray-400 mt-2">Coba lagi nanti atau hubungi kami untuk info lebih lanjut!</p>
+                </div>
             @endforelse
         </div>
 
-        <div class="mt-12">
-            {{ $menus->links() }}
-        </div>
+        @if ($menus->hasPages())
+            <div class="mt-12">
+                {{ $menus->links() }}
+            </div>
+        @endif
     </div>
 </section>
 @endsection

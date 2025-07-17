@@ -27,15 +27,22 @@
 
                         <div class="grid grid-cols-2 gap-2 mt-auto">
                             <!-- Order Button -->
-                            <a href="{{ route('order.form', $menu->id) }}"
-                               class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
-                                <i class="fas fa-utensils mr-1"></i> Order
-                            </a>
+                            @auth
+                                <a href="{{ route('order.form', $menu->id) }}?source=menu"
+                                   class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
+                                    <i class="fas fa-utensils mr-1"></i> Order
+                                </a>
+                            @else
+                                <a href="{{ route('auth.login') }}?redirect={{ route('order.form', $menu->id) }}?source=menu"
+                                   class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
+                                    <i class="fas fa-utensils mr-1"></i> Order
+                                </span>
+                            @endauth
 
                             <!-- Add to Cart Button -->
                             <form action="{{ route('cart.add', $menu->id) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="jumlah" value="1">
+                                <input="hidden" name="jumlah" value="1">
                                 <button type="submit"
                                         class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg text-sm font-semibold flex items-center justify-center transition">
                                     <i class="fas fa-shopping-cart mr-1"></i> Add to Cart

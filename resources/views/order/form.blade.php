@@ -95,7 +95,8 @@
                             <button type="button" id="decrement" class="bg-gray-200 text-gray-700 px-3 py-2 rounded-l-lg hover:bg-gray-300 transition">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="number" id="jumlah" name="jumlah" min="1" value="{{ old('jumlah', $jumlah ?? 1) }}"
+                            <input type="number" id="jumlah" name="jumlah" min="1" 
+                                value="{{ old('jumlah', (isset($source) && $source === 'cart' && session('cart') && isset(session('cart')[$menu->id])) ? session('cart')[$menu->id]['quantity'] : 1) }}"
                                 class="w-full px-4 py-2 border-t border-b border-gray-300 text-center focus:outline-none">
                             <button type="button" id="increment" class="bg-gray-200 text-gray-700 px-3 py-2 rounded-r-lg hover:bg-gray-300 transition">
                                 <i class="fas fa-plus"></i>
@@ -106,7 +107,7 @@
 
                 <!-- Delivery Method -->
                 <div class="space-y-2">
-                    <label for="pengiriman" class="flex items-center text-gray-700 font-medium">
+                    <label class="flex items-center text-gray-700 font-medium">
                         <i class="fas fa-truck text-pink-500 mr-2"></i> Metode Pengiriman
                     </label>
                     <div class="grid grid-cols-2 gap-4">
@@ -154,6 +155,7 @@
         const incrementBtn = document.getElementById('increment');
         const decrementBtn = document.getElementById('decrement');
 
+        // Handle account info toggle
         useAccountCheckbox?.addEventListener('change', () => {
             const isChecked = useAccountCheckbox.checked;
             const user = @json(auth()->user());
@@ -161,16 +163,23 @@
             document.getElementById('nama').value     = isChecked && user.name     ? user.name     : '';
             document.getElementById('telepon').value  = isChecked && user.telepon  ? user.telepon  : '';
             document.getElementById('alamat').value   = isChecked && user.alamat   ? user.alamat   : '';
-            document.getElementById('pengiriman').checked = false;
             document.getElementById('catatan').value  = '';
         });
 
+        // Handle quantity increment/decrement
         incrementBtn?.addEventListener('click', () => {
             jumlahInput.value = parseInt(jumlahInput.value || '1') + 1;
         });
 
         decrementBtn?.addEventListener('click', () => {
             jumlahInput.value = Math.max(1, parseInt(jumlahInput.value || '1') - 1);
+        });
+
+        // Ensure quantity input stays positive
+        jumlahInput?.addEventListener('input', () => {
+            if (jumlahInput.value < 1 || isNaN(jumlahInput.value)) {
+                jumlahInput.value = 1;
+            }
         });
     });
 </script>

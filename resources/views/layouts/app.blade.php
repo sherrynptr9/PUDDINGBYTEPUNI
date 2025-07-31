@@ -6,7 +6,6 @@
     <title>@yield('title') - Puding by Tepuni</title>
     <meta name="description" content="Delicious artisanal puddings crafted with love by Tepuni">
 
-    <!-- Tailwind CSS with custom colors -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,10 +41,8 @@
         }
     </script>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome & Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
@@ -127,7 +124,7 @@
 
                         <a href="{{ route('cart.index') }}#cart" class="bg-gradient-to-r from-pudding-primary to-pudding-secondary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300 flex items-center pudding-shadow">
                             <i class="fas fa-shopping-cart mr-2"></i> Cart 
-                            <span class="ml-1 bg-white text-pudding-primary rounded-full h-5 w-5 flex items-center justify-center text-xs">0</span>
+                            <span class="ml-1 bg-white text-pudding-primary rounded-full h-5 w-5 flex items-center justify-center text-xs">{{ $cartCount }}</span>
                         </a>
                     </div>
                 </div>
@@ -170,7 +167,7 @@
 
                 <a href="{{ route('cart.index') }}#cart" class="block bg-gradient-to-r from-pudding-primary to-pudding-secondary text-white px-5 py-3 rounded-full text-base font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center pudding-shadow">
                     <i class="fas fa-shopping-cart mr-2"></i> Cart
-                    <span class="ml-2 bg-white text-pudding-primary rounded-full h-6 w-6 flex items-center justify-center text-sm">0</span>
+                    <span class="ml-2 bg-white text-pudding-primary rounded-full h-6 w-6 flex items-center justify-center text-sm">{{ $cartCount }}</span>
                 </a>
             </div>
         </div>
@@ -198,6 +195,9 @@
                     <div class="flex items-center mb-4">
                         <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pudding-primary to-pudding-secondary flex items-center justify-center text-white mr-3 shadow-md">
                             <i class="fas fa-ice-cream text-xl"></i>
+                            <div class="absolute -bottom-1 -right-1 h-5 w-5 bg-white rounded-full flex items-center justify-center shadow-inner">
+                                <div class="h-3 w-3 rounded-full bg-pudding-primary animate-pulse"></div>
+                            </div>
                         </div>
                         <span class="text-2xl font-display text-pudding-dark">Puding by Tepuni</span>
                     </div>

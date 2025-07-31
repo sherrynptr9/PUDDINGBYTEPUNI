@@ -15,6 +15,7 @@ class Menu extends Model
         'harga',
         'gambar',
         'is_favorit',
+        'is_available',
     ];
 
     public function orders()

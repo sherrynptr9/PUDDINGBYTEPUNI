@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->date('tanggal_pesan');
             $table->integer('jumlah');
-            $table->foreignId('menu_id')->constrained()->onDelete('cascade'); // Relasi ke menus
+            $table->foreignId('menu_id')->nullable()->constrained()->onDelete('cascade'); // Relasi ke menus, nullable
             $table->enum('status', ['pending', 'konfirmasi', 'dibatalkan','selesai'])->default('pending');
             $table->enum('pengiriman', ['delivery','pickup']);
             $table->text('catatan')->nullable();

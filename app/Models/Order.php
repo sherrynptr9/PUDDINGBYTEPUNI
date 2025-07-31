@@ -9,20 +9,18 @@ class Order extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
-            'nama_pemesan',
-            'no_wa',
-            'alamat',
-            'tanggal_pesan',
-            'jumlah',
-            'menu_id',
-            'status',
-            'user_id',
-            'pengiriman',
-            'catatan',
-        ];
-
-
+    protected $fillable = [
+        'nama_pemesan',
+        'no_wa',
+        'alamat',
+        'tanggal_pesan',
+        'jumlah',
+        'menu_id',
+        'status',
+        'user_id',
+        'pengiriman',
+        'catatan',
+    ];
 
     public function menu()
     {

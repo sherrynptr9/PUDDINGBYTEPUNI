@@ -15,6 +15,7 @@ return new class extends Migration
             $table->decimal('harga', 10, 2);
             $table->string('gambar')->nullable();
             $table->boolean('is_favorit')->default(false);
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }

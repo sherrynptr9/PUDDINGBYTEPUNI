@@ -37,17 +37,24 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 | Protected Routes (Harus Login)
 |--------------------------------------------------------------------------
 */
-
 Route::middleware('auth')->group(function () {
     // Akun
     Route::get('/akun', [ProfileController::class, 'index'])->name('user.account');
     Route::get('/akun/edit', [ProfileController::class, 'edit'])->name('user.edit');
     Route::post('/akun/update', [ProfileController::class, 'update'])->name('user.update');
 
+    // =================== BAGIAN YANG DIPERBAIKI ===================
     // Pemesanan
+    Route::get('/order/cart', [OrderController::class, 'form'])->name('order.cart'); // Rute BARU untuk menampilkan form dari keranjang
+    Route::post('/order/cart', [OrderController::class, 'submitCart'])->name('order.submitCart'); // Rute BARU untuk submit pesanan dari keranjang
+
+    // Rute untuk order satu menu (sudah benar)
     Route::get('/order/{menu}', [OrderController::class, 'form'])->name('order.form');
     Route::post('/order/{menu}', [OrderController::class, 'submit'])->name('order.submit');
+
+    // Rute untuk invoice (sudah benar)
     Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.invoice');
+    // =============================================================
 
     // Keranjang
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

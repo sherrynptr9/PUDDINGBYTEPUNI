@@ -2,78 +2,131 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Menu;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
-    // Tampilkan semua isi keranjang user
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display all cart items for the authenticated user.
+     */
     public function index()
     {
         $carts = Cart::with('menu')
-                     ->where('user_id', auth()->id())
-                     ->get();
+            ->where('user_id', auth()->id())
+            ->whereHas('menu', fn($query) => $query->where('is_available', true))
+            ->get();
 
         return view('cart.index', compact('carts'));
     }
 
-    // Tambahkan item ke keranjang
+    /**
+     * Add a menu item to the cart.
+     */
     public function add(Request $request, Menu $menu)
     {
+        if (!$menu->is_available) {
+            return redirect()->route('cart.index')
+                ->with('error', 'Menu tidak tersedia untuk dipesan.');
+        }
+
         $request->validate([
-            'jumlah' => 'nullable|integer|min:1',
+            'jumlah' => 'nullable|integer|min:1|max:100',
         ]);
 
         $jumlah = $request->input('jumlah', 1);
 
-        $cart = Cart::where('user_id', auth()->id())
-                    ->where('menu_id', $menu->id)
-                    ->first();
+        try {
+            DB::beginTransaction();
 
-        if ($cart) {
-            $cart->jumlah += $jumlah;
-            $cart->save();
-        } else {
-            Cart::create([
-                'user_id' => auth()->id(),
-                'menu_id' => $menu->id,
-                'jumlah'  => $jumlah,
-            ]);
+            $cart = Cart::where('user_id', auth()->id())
+                ->where('menu_id', $menu->id)
+                ->first();
+
+            if ($cart) {
+                $cart->jumlah += $jumlah;
+                $cart->save();
+            } else {
+                Cart::create([
+                    'user_id' => auth()->id(),
+                    'menu_id' => $menu->id,
+                    'jumlah'  => $jumlah,
+                ]);
+            }
+
+            DB::commit();
+
+            return redirect()->route('cart.index')
+                ->with('success', 'Menu berhasil ditambahkan ke keranjang!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Failed to add item to cart: ' . $e->getMessage());
+            return redirect()->route('cart.index')
+                ->with('error', 'Gagal menambahkan menu ke keranjang. Silakan coba lagi.');
         }
-
-        return redirect()->route('cart.index')
-                         ->with('success', 'Menu berhasil ditambahkan ke keranjang!');
     }
 
-    // Hapus item dari keranjang
+    /**
+     * Remove a cart item.
+     */
     public function remove($id)
     {
-        $cart = Cart::where('id', $id)
-                    ->where('user_id', auth()->id())
-                    ->firstOrFail();
+        try {
+            $cart = Cart::where('id', $id)
+                ->where('user_id', auth()->id())
+                ->firstOrFail();
 
-        $cart->delete();
+            $cart->delete();
 
-        return redirect()->route('cart.index')
-                         ->with('success', 'Item berhasil dihapus dari keranjang.');
+            return redirect()->route('cart.index')
+                ->with('success', 'Item berhasil dihapus dari keranjang.');
+        } catch (\Exception $e) {
+            Log::error('Failed to remove cart item: ' . $e->getMessage());
+            return redirect()->route('cart.index')
+                ->with('error', 'Gagal menghapus item dari keranjang. Silakan coba lagi.');
+        }
     }
 
-    // Update jumlah item di keranjang (tambah/kurang)
+    /**
+     * Update the quantity of a cart item.
+     */
     public function update(Request $request, $id)
     {
-        $cart = Cart::where('id', $id)
-                    ->where('user_id', auth()->id())
-                    ->firstOrFail();
+        $request->validate([
+            'action' => 'required|in:increase,decrease',
+        ]);
 
-        if ($request->action === 'increase') {
-            $cart->jumlah += 1;
-        } elseif ($request->action === 'decrease' && $cart->jumlah > 1) {
-            $cart->jumlah -= 1;
+        try {
+            $cart = Cart::where('id', $id)
+                ->where('user_id', auth()->id())
+                ->firstOrFail();
+
+            if ($request->action === 'increase') {
+                if ($cart->jumlah >= 100) {
+                    return redirect()->route('cart.index')
+                        ->with('error', 'Jumlah maksimum sudah tercapai.');
+                }
+                $cart->jumlah += 1;
+            } elseif ($request->action === 'decrease' && $cart->jumlah > 1) {
+                $cart->jumlah -= 1;
+            }
+
+            $cart->save();
+
+            return redirect()->route('cart.index')
+                ->with('success', 'Jumlah berhasil diperbarui.');
+        } catch (\Exception $e) {
+            Log::error('Failed to update cart item: ' . $e->getMessage());
+            return redirect()->route('cart.index')
+                ->with('error', 'Gagal memperbarui jumlah. Silakan coba lagi.');
         }
-
-        $cart->save();
-
-        return back()->with('success', 'Jumlah berhasil diperbarui');
     }
 }

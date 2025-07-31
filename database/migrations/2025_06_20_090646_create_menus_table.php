@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->boolean('is_favorit')->default(false);
             $table->boolean('is_available')->default(true);
+            $table->unsignedTinyInteger('rating')->default(0); // Tambahkan rating di sini (0–5)
             $table->timestamps();
         });
     }

@@ -43,20 +43,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/akun/edit', [ProfileController::class, 'edit'])->name('user.edit');
     Route::post('/akun/update', [ProfileController::class, 'update'])->name('user.update');
 
-    // =================== BAGIAN YANG DIPERBAIKI ===================
-    // Pemesanan
-    Route::get('/order/cart', [OrderController::class, 'form'])->name('order.cart'); // Rute BARU untuk menampilkan form dari keranjang
-    Route::post('/order/cart', [OrderController::class, 'submitCart'])->name('order.submitCart'); // Rute BARU untuk submit pesanan dari keranjang
-
-    // Rute untuk order satu menu (sudah benar)
-    Route::get('/order/{menu}', [OrderController::class, 'form'])->name('order.form');
-    Route::post('/order/{menu}', [OrderController::class, 'submit'])->name('order.submit');
-
-    // Rute untuk invoice (sudah benar)
+    // =================== PEMESANAN ===================
+    // Invoice
     Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.invoice');
-    // =============================================================
 
-    // Keranjang
+    // Dari keranjang (multi menu)
+    Route::get('/order/cart', [OrderController::class, 'form'])->name('order.cart');
+    Route::post('/order/cart', [OrderController::class, 'submitCart'])->name('order.submit.cart');
+
+    // Dari single menu
+    Route::get('/order/{menu}', [OrderController::class, 'form'])->name('order.form');
+    Route::post('/order/{menu}', [OrderController::class, 'submitSingle'])->name('order.submit');
+
+    // =================== KERANJANG ===================
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add/{menu}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');

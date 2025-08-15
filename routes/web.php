@@ -13,55 +13,58 @@ use App\Http\Controllers\{
 
 /*
 |--------------------------------------------------------------------------
-| Public Routes (Tanpa Login)
+| Public Routes (Without Login)
 |--------------------------------------------------------------------------
 */
 
-// Beranda & Menu
+// Home & Menus
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
 
-// Testimoni
-Route::get('/testimoni', [TestimoniController::class, 'showTestimoni'])->name('testimoni.index');
-Route::get('/testimoni/form', fn() => view('testimoni.form'))->name('testimoni.form');
+// Testimonial Routes
+Route::prefix('testimoni')->name('testimoni.')->group(function () {
+    Route::get('/', [TestimoniController::class, 'showTestimoni'])->name('index');
+    Route::get('/form', fn() => view('testimoni.form'))->name('form');
+    // Added a route to handle the submission of new testimonials
+    Route::post('/', [TestimoniController::class, 'store'])->name('store');
+});
 
-// Autentikasi
-Route::get('/login', [AuthController::class, 'loginForm'])->name('auth.login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'registerForm'])->name('auth.register');
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+// Authentication Routes
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'loginForm')->name('auth.login');
+    Route::post('/login', 'login');
+    Route::get('/register', 'registerForm')->name('auth.register');
+    Route::post('/register', 'register');
+    Route::post('/logout', 'logout')->name('auth.logout');
+});
 
 /*
 |--------------------------------------------------------------------------
-| Protected Routes (Harus Login)
+| Protected Routes (Requires Login)
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->group(function () {
-    // Akun
-    Route::get('/akun', [ProfileController::class, 'index'])->name('user.account');
-    Route::get('/akun/edit', [ProfileController::class, 'edit'])->name('user.edit');
-    Route::post('/akun/update', [ProfileController::class, 'update'])->name('user.update');
+    // User Account Routes
+    Route::prefix('akun')->name('user.')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('account');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
+        Route::post('/update', [ProfileController::class, 'update'])->name('update');
+    });
 
-    // =================== PEMESANAN ===================
-    // Invoice
-    Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.invoice');
+    // Order Routes
+    Route::prefix('order')->name('order.')->group(function () {
+        Route::get('/success/{order}', [OrderController::class, 'success'])->name('invoice');
+        Route::get('/cart', [OrderController::class, 'form'])->name('cart');
+        Route::post('/cart', [OrderController::class, 'submitCart'])->name('submit.cart');
+        Route::get('/{menu}', [OrderController::class, 'form'])->name('form');
+        Route::post('/{menu}', [OrderController::class, 'submitSingle'])->name('submit');
+    });
 
-    // Dari keranjang (multi menu)
-    Route::get('/order/cart', [OrderController::class, 'form'])->name('order.cart');
-    Route::post('/order/cart', [OrderController::class, 'submitCart'])->name('order.submit.cart');
-
-    // Dari single menu
-    Route::get('/order/{menu}', [OrderController::class, 'form'])->name('order.form');
-    Route::post('/order/{menu}', [OrderController::class, 'submitSingle'])->name('order.submit');
-
-    // =================== KERANJANG ===================
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/add/{menu}', [CartController::class, 'add'])->name('cart.add');
-    Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
-<<<<<<< HEAD
+    // Cart Routes
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('index');
+        Route::post('/add/{menu}', [CartController::class, 'add'])->name('add');
+        Route::delete('/remove/{cart}', [CartController::class, 'remove'])->name('remove');
+        Route::put('/update/{id}', [CartController::class, 'update'])->name('update');
+    });
 });
-=======
-});
->>>>>>> fd6a9bb5 (commit)=

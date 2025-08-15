@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    /**
+     * Display a listing of the menus.
+     */
     public function index()
     {
-        // Ambil semua menu dari database
-<<<<<<< HEAD
-        $menus = Menu::latest()->paginate(9); // paginate opsional
-
-=======
+        // Fetch all menus from the database, sorted by the latest, with pagination.
         $menus = Menu::latest()->paginate(9);
->>>>>>> fd6a9bb5 (commit)
+
+        // Return the 'menus.index' view with the paginated menu data.
         return view('menus.index', compact('menus'));
     }
 }

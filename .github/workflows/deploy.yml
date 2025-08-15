@@ -15,21 +15,21 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
+       script: |
         # Pindah ke direktori proyek dengan path yang sudah benar
-          cd /home/wonderfull-ntt.my.id/public_html
-          
-          # Perintah ini juga menggunakan path yang sudah benar
-          git config --global --add safe.directory /home/wonderfull-ntt.my.id/public_html
-          
-          # Tarik perubahan terbaru dari GitHub
-          git pull origin main
-          
-          echo "🚀 Deployment finished, running Laravel commands..."
-          
-          # Menambahkan ini agar Composer tidak menampilkan warning saat dijalankan oleh root
-          export COMPOSer_ALLOW_SUPERUSER=1
-          
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-          php artisan migrate --force
-          php artisan optimize:clear
+        cd /home/pudingtepuni.store/public_html
+        
+        # Perintah ini SEKARANG menggunakan path yang sama dan sudah benar
+        git config --global --add safe.directory /home/pudingtepuni.store/public_html
+        
+        # Tarik perubahan terbaru dari GitHub
+        git pull origin main
+        
+        echo "🚀 Deployment finished, running Laravel commands..."
+        
+        # Menambahkan ini agar Composer tidak menampilkan warning saat dijalankan oleh root
+        export COMPOSER_ALLOW_SUPERUSER=1
+        
+        composer install --no-interaction --prefer-dist --optimize-autoloader
+        php artisan migrate --force
+        php artisan optimize:clear

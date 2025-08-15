@@ -34,6 +34,6 @@ class UserOrderController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect('/')->with('success', 'Pesanan berhasil dikirim!');
+        return redirect('/')->with('success', 'Pesanan berhasil dikirim!!');
     }
 }

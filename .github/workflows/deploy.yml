@@ -17,22 +17,17 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          # Pindah ke direktori proyek
           cd /home/pudingtepuni.store/public_html
-          
-          # Atur agar direktori aman digunakan oleh user root
           git config --global --add safe.directory /home/pudingtepuni.store/public_html
-          
-          # Ganti 'git pull' dengan dua perintah ini untuk update paksa
           git fetch origin main
           git reset --hard origin/main
           
           echo "🚀 Deployment finished, running Laravel commands..."
-          
-          # Izinkan Composer dijalankan sebagai root
           export COMPOSER_ALLOW_SUPERUSER=1
           
-          # Jalankan perintah-perintah Laravel
+          # Hapus folder vendor dan file lock untuk instalasi bersih
+          rm -rf vendor composer.lock
+          
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
           php artisan optimize:clear

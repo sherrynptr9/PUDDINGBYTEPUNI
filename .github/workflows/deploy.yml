@@ -11,23 +11,34 @@ jobs:
     steps:
     - name: SSH and Deploy
       uses: appleboy/ssh-action@v1.0.3
-      # "with" dan isinya harus menjorok ke dalam seperti ini
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          # Pindah ke direktori proyek
           cd /home/pudingtepuni.store/public_html
+          
+          # Atur keamanan direktori
           git config --global --add safe.directory /home/pudingtepuni.store/public_html
+          
+          # Update kode dari GitHub (menimpa perubahan lokal di server)
           git fetch origin main
           git reset --hard origin/main
+          
+          # Salin file .env dari lokasi aman ke dalam proyek
+          # PASTIKAN ANDA SUDAH MEMBUAT FILE .env.production INI
+          cp /home/pudingtepuni.store/.env.production ./.env
           
           echo "🚀 Deployment finished, running Laravel commands..."
           export COMPOSER_ALLOW_SUPERUSER=1
           
-          # Hapus folder vendor dan file lock untuk instalasi bersih
+          # Hapus sisa-sisa lama untuk instalasi bersih
           rm -rf vendor composer.lock
           
           composer install --no-interaction --prefer-dist --optimize-autoloader
+          
+          # Jalankan perintah Artisan (sekarang dengan .env yang benar)
+          php artisan config:clear
           php artisan migrate --force
           php artisan optimize:clear

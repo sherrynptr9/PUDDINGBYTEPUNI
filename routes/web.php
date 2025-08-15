@@ -60,4 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/add/{menu}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/cart/remove/{cart}', [CartController::class, 'remove'])->name('cart.remove');
     Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> fd6a9bb5 (commit)=

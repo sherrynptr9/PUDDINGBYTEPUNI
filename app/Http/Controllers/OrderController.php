@@ -139,4 +139,8 @@ class OrderController extends Controller
 
         return view('order.invoice', compact('order'));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> fd6a9bb5 (commit)

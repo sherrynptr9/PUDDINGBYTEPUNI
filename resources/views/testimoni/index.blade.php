@@ -100,6 +100,7 @@
                     </div>
                 @endforeach
             </div>
+<<<<<<< HEAD
             
             <!-- CTA Section -->
             <div class="text-center mt-16">
@@ -113,6 +114,8 @@
                     </a>
                 </div>
             </div>
+=======
+>>>>>>> fd6a9bb5 (commit)
         @endif
     </div>
 </div>

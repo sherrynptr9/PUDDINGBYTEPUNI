@@ -16,6 +16,10 @@ class Menu extends Model
         'gambar',
         'is_favorit',
         'is_available',
+<<<<<<< HEAD
+=======
+        'rating',
+>>>>>>> fd6a9bb5 (commit)
     ];
 
     public function orders()

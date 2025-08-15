@@ -25,7 +25,11 @@
                             Pre-order 2 days in advance for the freshest, preservative-free treats! 🧁
                         </p>
                         <div class="d-flex flex-column flex-sm-row gap-3">
+<<<<<<< HEAD
                             <a href="#menu" class="btn btn-primary btn-lg">
+=======
+                            <a href="{{ route('menus.index') }}" class="btn btn-primary btn-lg">
+>>>>>>> fd6a9bb5 (commit)
                                 <i class="fas fa-utensils mr-2"></i> Explore Menu
                             </a>
                             <a href="#about" class="btn btn-outline-light btn-lg">
@@ -56,7 +60,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="about-img-container">
+<<<<<<< HEAD
                         <img src="{{ asset('storage/images/Pudding.jpg') }}" 
+=======
+                        <img src="{{ asset('storage/images/Regal.jpg') }}" 
+>>>>>>> fd6a9bb5 (commit)
                              alt="Our Puddings" 
                              class="img-fluid w-100 rounded-3xl"
                              loading="lazy">
@@ -82,8 +90,13 @@
                                 <h5 class="mb-1">Stevefanny Putri</h5>
                                 <p class="text-muted mb-0">Founder & Pudding Fairy</p>
                                 <div class="mt-2">
+<<<<<<< HEAD
                                     <a href="#" class="text-pink-600 me-3"><i class="fab fa-instagram"></i></a>
                                     <a href="#" class="text-pink-600"><i class="fab fa-whatsapp"></i></a>
+=======
+                                    <a href="https://www.instagram.com/stvfnnyptr?igsh=Yno5eXI0ODZudWp0" class="text-pink-600 me-3"><i class="fab fa-instagram"></i></a>
+
+>>>>>>> fd6a9bb5 (commit)
                                 </div>
                             </div>
                         </div>
@@ -147,10 +160,16 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="menu-card h-100 animate__animated animate__zoomIn" data-wow-delay="{{ 0.1 * $loop->index }}s">
                             <div class="menu-img-container">
+<<<<<<< HEAD
                                 <img src="{{ asset($menu->gambar ? 'storage/images/' . $menu->gambar : 'storage/images/fallback.jpg') }}" 
                                      alt="{{ $menu->nama }}" 
                                      class="menu-img"
                                      loading="lazy">
+=======
+                                <img src="{{ asset($menu->gambar ? 'storage/' . $menu->gambar : 'storage/images/fallback.jpg') }}" 
+                             alt="{{ $menu->nama }}" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+>>>>>>> fd6a9bb5 (commit)
                                 @if($menu->is_favorit)
                                     <div class="menu-badge bg-pink-400">
                                         <i class="fas fa-crown me-1"></i> Top Pick!
@@ -288,6 +307,7 @@
                         </div>
                     @endforeach
                 </div>
+<<<<<<< HEAD
                 
                 <div class="text-center mt-12 animate__animated animate__bounceIn">
                     <a href="#" class="inline-flex items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl">
@@ -297,6 +317,8 @@
                         Share Your Sweet Story!
                     </a>
                 </div>
+=======
+>>>>>>> fd6a9bb5 (commit)
             @endif
         </div>
     </section>

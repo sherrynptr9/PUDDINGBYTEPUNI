@@ -254,7 +254,10 @@
                                     </div>
                                     <span class="font-semibold">Pickup</span>
                                     <span class="text-sm text-gray-500 text-center mt-1">Ambil di toko kami</span>
+<<<<<<< HEAD
                                     <span class="text-xs text-pink-500 mt-2 font-medium">GRATIS</span>
+=======
+>>>>>>> fd6a9bb5 (commit)
                                     <div class="mt-2 text-xs text-gray-400 hidden peer-checked:block animate__animated animate__fadeIn">
                                         <i class="fas fa-info-circle mr-1"></i> Alamat toko akan dikirim via WhatsApp
                                     </div>
@@ -269,7 +272,10 @@
                                     </div>
                                     <span class="font-semibold">Delivery</span>
                                     <span class="text-sm text-gray-500 text-center mt-1">Antar ke alamat</span>
+<<<<<<< HEAD
                                     <span class="text-xs text-indigo-500 mt-2 font-medium">+ Rp 10.000</span>
+=======
+>>>>>>> fd6a9bb5 (commit)
                                     <div class="mt-2 text-xs text-gray-400 hidden peer-checked:block animate__animated animate__fadeIn">
                                         <i class="fas fa-info-circle mr-1"></i> Ongkir tergantung lokasi
                                     </div>
@@ -290,7 +296,11 @@
                         <div class="relative">
                             <textarea id="catatan" name="catatan" rows="2"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 pl-10 transition-all duration-200 @error('catatan') border-pink-500 @enderror"
+<<<<<<< HEAD
                                 placeholder="Contoh: Tambah topping cokelat, tanpa kacang, atau request khusus lainnya">{{ old('catatan') }}</textarea>
+=======
+                                placeholder="Contoh: Jangan terlalu manis atau request khusus lainnya">{{ old('catatan') }}</textarea>
+>>>>>>> fd6a9bb5 (commit)
                             <i class="fas fa-edit absolute left-3 top-3 text-gray-400"></i>
                             @error('catatan')
                             <p class="text-pink-500 text-sm mt-1 animate__animated animate__fadeIn"><i class="fas fa-exclamation-circle mr-1"></i> {{ $message }}</p>

@@ -77,7 +77,7 @@
                                 @for($i = 1; $i <= 5; $i++)
                                     @if($i <= $fullStars)
                                         <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3 .921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                         </svg>
                                     @elseif($i == $fullStars + 1 && $hasHalfStar)
                                         <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -100,22 +100,8 @@
                     </div>
                 @endforeach
             </div>
-<<<<<<< HEAD
             
-            <!-- CTA Section -->
-            <div class="text-center mt-16">
-                <div class="bg-white p-8 rounded-2xl shadow-inner border border-pink-100 inline-block">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Bagaimana pengalaman Anda?</h3>
-                    <p class="text-gray-600 mb-6 max-w-lg mx-auto">
-                        Bantu kami menjadi lebih baik dengan berbagi pengalaman Anda menikmati puding Tepuni
-                    </p>
-                    <a href="#" class="inline-flex items-center px-8 py-3 border border-pink-600 text-base font-medium rounded-full shadow-sm text-pink-600 bg-white hover:bg-pink-50 transition-colors duration-200">
-                        <i class="fas fa-edit mr-2"></i> Beri Testimoni
-                    </a>
-                </div>
-            </div>
-=======
->>>>>>> fd6a9bb5 (commit)
+        
         @endif
     </div>
 </div>

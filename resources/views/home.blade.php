@@ -25,11 +25,7 @@
                             Pre-order 2 days in advance for the freshest, preservative-free treats! 🧁
                         </p>
                         <div class="d-flex flex-column flex-sm-row gap-3">
-<<<<<<< HEAD
-                            <a href="#menu" class="btn btn-primary btn-lg">
-=======
                             <a href="{{ route('menus.index') }}" class="btn btn-primary btn-lg">
->>>>>>> fd6a9bb5 (commit)
                                 <i class="fas fa-utensils mr-2"></i> Explore Menu
                             </a>
                             <a href="#about" class="btn btn-outline-light btn-lg">
@@ -40,10 +36,10 @@
                     <div class="col-lg-6 animate__animated animate__bounceInRight">
                         <div class="position-relative">
                             <img src="{{ asset('storage/images/Pudding Regal Loyang Besar.png') }}" 
-                                 alt="Premium Pudding by Tepuni" 
-                                 class="img-fluid rounded-3xl shadow-lg border-4 border-pink-200"
-                                 loading="lazy"
-                                 style="transform: perspective(1000px) rotateY(-10deg);">
+                                alt="Premium Pudding by Tepuni" 
+                                class="img-fluid rounded-3xl shadow-lg border-4 border-pink-200"
+                                loading="lazy"
+                                style="transform: perspective(1000px) rotateY(-10deg);">
                             <div class="position-absolute bottom-0 start-0 translate-middle-y bg-pink-100 text-pink-600 p-3 rounded-circle shadow" style="width: 80px; height: 80px;">
                                 <i class="fas fa-heart fs-3 animate__animated animate__pulse animate__infinite"></i>
                             </div>
@@ -60,14 +56,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="about-img-container">
-<<<<<<< HEAD
-                        <img src="{{ asset('storage/images/Pudding.jpg') }}" 
-=======
                         <img src="{{ asset('storage/images/Regal.jpg') }}" 
->>>>>>> fd6a9bb5 (commit)
-                             alt="Our Puddings" 
-                             class="img-fluid w-100 rounded-3xl"
-                             loading="lazy">
+                            alt="Our Puddings" 
+                            class="img-fluid w-100 rounded-3xl"
+                            loading="lazy">
                     </div>
                 </div>
                 <div class="col-lg-6 animate__animated animate__fadeInUp">
@@ -82,21 +74,15 @@
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100">
                         <div class="d-flex align-items-center">
                             <img src="{{ asset('storage/images/Foto fanny.jpg') }}" 
-                                 alt="Stevefanny Putri" 
-                                 class="rounded-circle me-4" 
-                                 width="80"
-                                 style="border: 3px solid var(--primary-pink);">
+                                alt="Stevefanny Putri" 
+                                class="rounded-circle me-4" 
+                                width="80"
+                                style="border: 3px solid var(--primary-pink);">
                             <div>
                                 <h5 class="mb-1">Stevefanny Putri</h5>
                                 <p class="text-muted mb-0">Founder & Pudding Fairy</p>
                                 <div class="mt-2">
-<<<<<<< HEAD
-                                    <a href="#" class="text-pink-600 me-3"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="text-pink-600"><i class="fab fa-whatsapp"></i></a>
-=======
                                     <a href="https://www.instagram.com/stvfnnyptr?igsh=Yno5eXI0ODZudWp0" class="text-pink-600 me-3"><i class="fab fa-instagram"></i></a>
-
->>>>>>> fd6a9bb5 (commit)
                                 </div>
                             </div>
                         </div>
@@ -160,16 +146,9 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="menu-card h-100 animate__animated animate__zoomIn" data-wow-delay="{{ 0.1 * $loop->index }}s">
                             <div class="menu-img-container">
-<<<<<<< HEAD
-                                <img src="{{ asset($menu->gambar ? 'storage/images/' . $menu->gambar : 'storage/images/fallback.jpg') }}" 
-                                     alt="{{ $menu->nama }}" 
-                                     class="menu-img"
-                                     loading="lazy">
-=======
                                 <img src="{{ asset($menu->gambar ? 'storage/' . $menu->gambar : 'storage/images/fallback.jpg') }}" 
-                             alt="{{ $menu->nama }}" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
->>>>>>> fd6a9bb5 (commit)
+                                    alt="{{ $menu->nama }}" 
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                                 @if($menu->is_favorit)
                                     <div class="menu-badge bg-pink-400">
                                         <i class="fas fa-crown me-1"></i> Top Pick!
@@ -307,18 +286,6 @@
                         </div>
                     @endforeach
                 </div>
-<<<<<<< HEAD
-                
-                <div class="text-center mt-12 animate__animated animate__bounceIn">
-                    <a href="#" class="inline-flex items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                        Share Your Sweet Story!
-                    </a>
-                </div>
-=======
->>>>>>> fd6a9bb5 (commit)
             @endif
         </div>
     </section>

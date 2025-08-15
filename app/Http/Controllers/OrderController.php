@@ -13,13 +13,24 @@ use Carbon\Carbon;
 
 class OrderController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth')->except(['form', 'submitSingle', 'success']);
+        // The 'auth' middleware is applied to all methods except for the ones listed.
+        // I've updated 'success' to 'invoice' to match the method rename.
+        $this->middleware('auth')->except(['form', 'submitSingle', 'invoice']);
     }
 
     /**
-     * Form pemesanan
+     * Display the order form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Menu|null  $menu
+     * @return \Illuminate\View\View|\Illuminate\Http\RedirectResponse
      */
     public function form(Request $request, Menu $menu = null)
     {
@@ -37,7 +48,11 @@ class OrderController extends Controller
     }
 
     /**
-     * Submit pesanan single menu
+     * Submit an order for a single menu item.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Menu  $menu
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function submitSingle(Request $request, Menu $menu)
     {
@@ -71,12 +86,16 @@ class OrderController extends Controller
             return redirect()->route('order.invoice', $order->id)->with('success', 'Pesanan berhasil dibuat!');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Gagal membuat pesanan: '.$e->getMessage());
+            Log::error('Order creation failed: ' . $e->getMessage());
+            return back()->with('error', 'Gagal membuat pesanan: Terjadi kesalahan pada server.');
         }
     }
 
     /**
-     * Submit pesanan dari cart
+     * Submit an order from the shopping cart.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function submitCart(Request $request)
     {
@@ -118,29 +137,32 @@ class OrderController extends Controller
                 }
             }
 
+            // Clear the user's cart after the order is successfully created.
             Cart::where('user_id', Auth::id())->delete();
 
             DB::commit();
             return redirect()->route('order.invoice', $firstOrderId)->with('success', 'Pesanan berhasil dibuat!');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Gagal membuat pesanan: '.$e->getMessage());
+            Log::error('Cart order creation failed: ' . $e->getMessage());
+            return back()->with('error', 'Gagal membuat pesanan: Terjadi kesalahan pada server.');
         }
     }
 
     /**
-     * Halaman invoice
+     * Display the order invoice page.
+     *
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\View\View
      */
-    public function success(Order $order)
+    public function invoice(Order $order)
     {
+        // Ensure that if an order has a user_id, only that user can view it.
+        // Guests who placed orders (user_id is null) can view their invoice.
         if ($order->user_id && Auth::id() !== $order->user_id) {
-            abort(403);
+            abort(403, 'Unauthorized action.');
         }
 
         return view('order.invoice', compact('order'));
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fd6a9bb5 (commit)

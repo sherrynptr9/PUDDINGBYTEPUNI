@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Puding by Tepuni')
+@section('title', 'Home - Belle Crème Dessert')
 
 @section('content')
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
             <div class="hero-content">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-5 mb-lg-0 animate__animated animate__bounceInLeft">
-                        <h1 class="display-4 font-weight-bold mb-4">Puding by Tepuni</h1>
+                        <h1 class="display-4 font-weight-bold mb-4">Belle Crème Dessert</h1>
                         <p class="lead mb-4" style="opacity: 0.9; font-size: 1.3rem;">
                             Sweet, artisanal puddings made with love and the finest ingredients for your happy moments! 💖
                         </p>
@@ -65,7 +65,7 @@
                 <div class="col-lg-6 animate__animated animate__fadeInUp">
                     <h2 class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600 text-center text-lg-start">Our Sweet Story</h2>
                     <p class="mb-4">
-                        Puding by Tepuni started as a cozy kitchen dream in 2015, turning love for sweets into delightful puddings that warm hearts. 💕
+                        Belle Crème Dessert started as a cozy kitchen dream in 2015, turning love for sweets into delightful puddings that warm hearts. 💕
                     </p>
                     <p class="mb-5">
                         We cherish our roots, crafting each pudding with traditional recipes and a sprinkle of joy to make every bite special! 🌸
@@ -73,17 +73,24 @@
                     
                     <div class="bg-white p-4 rounded-2xl shadow-sm border border-pink-100">
                         <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/images/Foto fanny.jpg') }}" 
-                                alt="Stevefanny Putri" 
+                            <img src="{{ asset('storage/images/Nayra.jpg') }}" 
+                                alt="Nayra Putri" 
                                 class="rounded-circle me-4" 
                                 width="80"
                                 style="border: 3px solid var(--primary-pink);">
                             <div>
-                                <h5 class="mb-1">Stevefanny Putri</h5>
+                                <h5 class="mb-1">Nayra Putri</h5>
                                 <p class="text-muted mb-0">Founder & Pudding Fairy</p>
                                 <div class="mt-2">
-                                    <a href="https://www.instagram.com/stvfnnyptr?igsh=Yno5eXI0ODZudWp0" class="text-pink-600 me-3"><i class="fab fa-instagram"></i></a>
-                                </div>
+                                    <a href="https://www.instagram.com/tepuni.id/" target="_blank" class="text-pink-500 me-3">
+                                        <i class="fab fa-instagram fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/tepuni.id" target="_blank" class="text-pink-500 me-3">
+                                        <i class="fab fa-facebook fa-lg"></i>
+                                    </a>
+                                    <a href="https://www.tokopedia.com/tepuni" target="_blank" class="text-pink-500">
+                                        <i class="fas fa-shopping-bag fa-lg"></i>
+                                    </a>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@
                 <p class="text-sm text-gray-500 mb-1">Selamat datang kembali di</p>
                 <div class="flex items-center justify-center gap-2">
                     <span class="text-xl">🍮</span>
-                    <span class="font-bold text-rose-500">Puding by Tepuni</span>
+                    <span class="font-bold text-rose-500">Belle Crème Dessert</span>
                 </div>
             </div>
 

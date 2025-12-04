@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title') - Puding by Tepuni</title>
+    <title>@yield('title') - Belle Crème Dessert</title>
     <meta name="description" content="Delicious artisanal puddings crafted with love by Tepuni">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -126,22 +126,10 @@
             <!-- Logo/Brand Section -->
             <div class="flex items-center min-w-0"> <!-- Added min-w-0 to prevent overflow -->
                 <div class="flex-shrink-0 flex items-center pudding-logo-container relative group">
-                    <!-- Pudding Logo with Interactive Elements -->
-                    <img src="{{ asset('storage/images/Pudding.png') }}" alt="Puding by Tepuni" 
-                        class="h-14 transform group-hover:rotate-6 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
-                    
-                    <!-- Animated "Cherry" Dot -->
-                    <div class="absolute -bottom-1 -right-1 h-5 w-5 bg-white rounded-full flex items-center justify-center shadow-inner">
-                        <div class="h-3 w-3 rounded-full bg-pudding-primary animate-[pulse_2s_infinite]"></div>
-                    </div>
-                    
-                    <!-- Subtle Drip Effect (Optional) -->
-                    <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-gradient-to-b from-pudding-primary/20 to-transparent"></div>
                 </div>
-                
                 <!-- Brand Text with Delicious Typography -->
                 <span class="text-2xl font-display font-medium text-pudding-dark bg-clip-text text-transparent bg-gradient-to-r from-pudding-primary to-pudding-secondary tracking-tight whitespace-nowrap ml-3 truncate">
-                    Puding by Tepuni
+                    Belle Crème Dessert
                 </span>
             </div>
 
@@ -246,20 +234,9 @@
                     <div class="flex items-center mb-6">
                        <div class="flex items-center min-w-0"> <!-- Added min-w-0 to prevent overflow -->
                 <div class="flex-shrink-0 flex items-center pudding-logo-container relative group">
-                    <!-- Pudding Logo with Interactive Elements -->
-                    <img src="{{ asset('storage/images/Pudding.png') }}" alt="Puding by Tepuni" 
-                        class="h-14 transform group-hover:rotate-6 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
-                    
-                    <!-- Animated "Cherry" Dot -->
-                    <div class="absolute -bottom-1 -right-1 h-5 w-5 bg-white rounded-full flex items-center justify-center shadow-inner">
-                        <div class="h-3 w-3 rounded-full bg-pudding-primary animate-[pulse_2s_infinite]"></div>
-                    </div>
-                    
-                    <!-- Subtle Drip Effect (Optional) -->
-                    <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-gradient-to-b from-pudding-primary/20 to-transparent"></div>
                 </div>
                         </div>
-                        <span class="text-3xl font-display pudding-text-gradient">Puding by Tepuni</span>
+                        <span class="text-3xl font-display pudding-text-gradient">Belle Crème Dessert</span>
                     </div>
                     <p class="text-pudding-dark text-sm mb-6 italic font-handwriting text-lg">"Delicious artisanal puddings crafted with love using the finest ingredients."</p>
                     <div class="flex space-x-4">
@@ -304,7 +281,7 @@
                 </div>
             </div>
             <div class="border-t border-pudding-light pt-6 text-center">
-                <p class="text-xs text-pudding-dark">&copy; {{ date('Y') }} Puding by Tepuni. All rights reserved. <span class="text-pudding-topping">Made with ♥ and lots of sugar!</span></p>
+                <p class="text-xs text-pudding-dark">&copy; {{ date('Y') }} Belle Crème Dessert. All rights reserved. <span class="text-pudding-topping">Made with ♥ and lots of sugar!</span></p>
             </div>
         </div>
     </footer>

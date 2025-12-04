@@ -79,8 +79,8 @@
                                         <div class="flex items-center">
                                             <div class="bg-white/20 p-2 rounded-full mr-3 transform hover:scale-110 transition duration-200">
                                                 <img src="{{ asset($cart->menu->gambar ? 'storage/' . $cart->menu->gambar : 'storage/images/fallback.jpg') }}"
-                                                     alt="{{ $cart->menu->nama }}"
-                                                     class="w-10 h-10 rounded-full object-cover border border-white">
+                                                    alt="{{ $cart->menu->nama }}"
+                                                    class="w-10 h-10 rounded-full object-cover border border-white">
                                             </div>
                                             <div>
                                                 <h3 class="text-lg font-medium">{{ $cart->menu->nama }}</h3>
@@ -254,10 +254,7 @@
                                     </div>
                                     <span class="font-semibold">Pickup</span>
                                     <span class="text-sm text-gray-500 text-center mt-1">Ambil di toko kami</span>
-<<<<<<< HEAD
                                     <span class="text-xs text-pink-500 mt-2 font-medium">GRATIS</span>
-=======
->>>>>>> fd6a9bb5 (commit)
                                     <div class="mt-2 text-xs text-gray-400 hidden peer-checked:block animate__animated animate__fadeIn">
                                         <i class="fas fa-info-circle mr-1"></i> Alamat toko akan dikirim via WhatsApp
                                     </div>
@@ -272,10 +269,7 @@
                                     </div>
                                     <span class="font-semibold">Delivery</span>
                                     <span class="text-sm text-gray-500 text-center mt-1">Antar ke alamat</span>
-<<<<<<< HEAD
                                     <span class="text-xs text-indigo-500 mt-2 font-medium">+ Rp 10.000</span>
-=======
->>>>>>> fd6a9bb5 (commit)
                                     <div class="mt-2 text-xs text-gray-400 hidden peer-checked:block animate__animated animate__fadeIn">
                                         <i class="fas fa-info-circle mr-1"></i> Ongkir tergantung lokasi
                                     </div>
@@ -296,11 +290,7 @@
                         <div class="relative">
                             <textarea id="catatan" name="catatan" rows="2"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 pl-10 transition-all duration-200 @error('catatan') border-pink-500 @enderror"
-<<<<<<< HEAD
                                 placeholder="Contoh: Tambah topping cokelat, tanpa kacang, atau request khusus lainnya">{{ old('catatan') }}</textarea>
-=======
-                                placeholder="Contoh: Jangan terlalu manis atau request khusus lainnya">{{ old('catatan') }}</textarea>
->>>>>>> fd6a9bb5 (commit)
                             <i class="fas fa-edit absolute left-3 top-3 text-gray-400"></i>
                             @error('catatan')
                             <p class="text-pink-500 text-sm mt-1 animate__animated animate__fadeIn"><i class="fas fa-exclamation-circle mr-1"></i> {{ $message }}</p>
@@ -403,34 +393,16 @@
                 0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
                 50% { transform: translateY(-10px) translateX(-10px) rotate(-2deg); }
             }
-            .animate-float1 {
-                animation: float1 8s ease-in-out infinite;
-            }
-            .animate-float2 {
-                animation: float2 10s ease-in-out infinite;
-            }
-            .animate-float3 {
-                animation: float3 7s ease-in-out infinite;
-            }
-            .animate-float4 {
-                animation: float4 9s ease-in-out infinite;
-            }
+            .animate-float1 { animation: float1 8s ease-in-out infinite; }
+            .animate-float2 { animation: float2 10s ease-in-out infinite; }
+            .animate-float3 { animation: float3 7s ease-in-out infinite; }
+            .animate-float4 { animation: float4 9s ease-in-out infinite; }
 
             /* Custom scrollbar */
-            .custom-scrollbar::-webkit-scrollbar {
-                width: 6px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-track {
-                background: rgba(255,255,255,0.1);
-                border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: rgba(255,255,255,0.3);
-                border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background: rgba(255,255,255,0.5);
-            }
+            .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+            .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+            .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 10px; }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
 
             /* Enhanced input focus */
             input:focus, textarea:focus, select:focus {
@@ -445,21 +417,13 @@
                 transition-duration: 200ms;
             }
 
-            /* Radio button checked state */
-            input[type="radio"]:checked + label {
-                border-color: var(--checked-color); /* This variable is not defined in your CSS. It's best to use Tailwind classes directly or define custom properties. */
-                background-color: var(--checked-bg); /* This variable is not defined in your CSS. */
-            }
-
             /* Quantity input spinner removal */
             input[type=number]::-webkit-inner-spin-button,
             input[type=number]::-webkit-outer-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
             }
-            input[type=number] {
-                -moz-appearance: textfield;
-            }
+            input[type=number] { -moz-appearance: textfield; }
         </style>
 
         <script>
@@ -467,7 +431,7 @@
                 // DOM elements
                 const useAccountBtn = document.getElementById('use-account-btn');
                 const namaInput = document.getElementById('nama_pemesan');
-                const noWaInput = document.getElementById('telepon'); // Corrected ID from 'telepon' to 'telepon'
+                const noWaInput = document.getElementById('telepon');
                 const alamatInput = document.getElementById('alamat');
                 const jumlahInput = document.getElementById('jumlah');
                 const incrementBtn = document.getElementById('increment');
@@ -494,16 +458,14 @@
                         warning: 'bg-gradient-to-r from-amber-500 to-orange-600'
                     };
 
-                    toast.className = `hidden fixed bottom-4 right-4 text-white px-6 py-4 rounded-xl shadow-xl flex items-center z-50 animate__animated animate__fadeInRight ${colors[type]} max-w-xs`;
+                    toast.className = `fixed bottom-4 right-4 text-white px-6 py-4 rounded-xl shadow-xl flex items-center z-50 animate__animated animate__fadeInRight ${colors[type]} max-w-xs`;
                     toastMessage.textContent = message;
                     toast.classList.remove('hidden');
 
-                    // Clear any existing timeout
                     if (toast.timeoutId) {
                         clearTimeout(toast.timeoutId);
                     }
 
-                    // Set new timeout
                     toast.timeoutId = setTimeout(() => {
                         hideToast();
                     }, duration);
@@ -519,7 +481,6 @@
                     }, 300);
                 };
 
-                // Close toast when close button is clicked
                 closeToast?.addEventListener('click', hideToast);
 
                 // Handle help modal
@@ -528,24 +489,20 @@
                     helpModal.querySelector('div').classList.add('animate__fadeInUp');
                 });
 
-                closeHelp?.addEventListener('click', () => {
+                const closeHelpModal = () => {
                     helpModal.querySelector('div').classList.remove('animate__fadeInUp');
                     helpModal.querySelector('div').classList.add('animate__fadeOutDown');
                     setTimeout(() => {
                         helpModal.classList.add('hidden');
                         helpModal.querySelector('div').classList.remove('animate__fadeOutDown');
                     }, 300);
-                });
+                };
 
-                // Close modal when clicking outside
+                closeHelp?.addEventListener('click', closeHelpModal);
+
                 helpModal?.addEventListener('click', (e) => {
                     if (e.target === helpModal) {
-                        helpModal.querySelector('div').classList.remove('animate__fadeInUp');
-                        helpModal.querySelector('div').classList.add('animate__fadeOutDown');
-                        setTimeout(() => {
-                            helpModal.classList.add('hidden');
-                            helpModal.querySelector('div').classList.remove('animate__fadeOutDown');
-                        }, 300);
+                        closeHelpModal();
                     }
                 });
 
@@ -553,13 +510,10 @@
                 if (useAccountBtn && namaInput && noWaInput && alamatInput) {
                     let usingAccount = false;
 
-                    // Set initial values if user is logged in and no old data
-                    // Check if old values are empty AND user is logged in
-                    if ('{{ auth()->check() }}' && !'{{ old("nama_pemesan") }}' && !'{{ old("telepon") }}' && !'{{ old("alamat") }}') {
+                    if (@json(auth()->check()) && !@json(old('nama_pemesan')) && !@json(old('telepon')) && !@json(old('alamat'))) {
                         namaInput.value = user.name || '';
                         noWaInput.value = user.telepon || '';
                         alamatInput.value = user.alamat || '';
-                        // Only mark as "using account" if there's actual data from the user object
                         if (user.name || user.telepon || user.alamat) {
                             usingAccount = true;
                             useAccountBtn.innerHTML = '<span class="relative z-10 flex items-center"><i class="fas fa-times-circle mr-2"></i> Hapus Data Akun Saya</span><span class="absolute inset-0 bg-gradient-to-r from-pink-200 to-pink-300 opacity-0 group-hover:opacity-100 transition duration-300"></span>';
@@ -585,32 +539,29 @@
 
                 // Quantity controls
                 if (jumlahInput && incrementBtn && decrementBtn) {
-                    // Add animation to quantity change
                     const animateQuantityChange = (direction) => {
-                        jumlahInput.classList.add('animate__animated', `animate__${direction === 'up' ? 'bounceIn' : 'shakeX'}`); // Changed bounce to bounceIn for visual
+                        const animation = direction === 'up' ? 'bounceIn' : 'shakeX';
+                        jumlahInput.classList.add('animate__animated', `animate__${animation}`);
                         setTimeout(() => {
-                            jumlahInput.classList.remove('animate__animated', `animate__${direction === 'up' ? 'bounceIn' : 'shakeX'}`);
+                            jumlahInput.classList.remove('animate__animated', `animate__${animation}`);
                         }, 1000);
                     };
 
                     incrementBtn.addEventListener('click', () => {
-                        jumlahInput.value = parseInt(jumlahInput.value || '0') + 1; // Start from 0 if empty
+                        jumlahInput.value = parseInt(jumlahInput.value || '0') + 1;
                         animateQuantityChange('up');
                     });
 
                     decrementBtn.addEventListener('click', () => {
-                        const newValue = Math.max(1, parseInt(jumlahInput.value || '0') - 1); // Ensure minimum is 1
+                        const newValue = Math.max(1, parseInt(jumlahInput.value || '1') - 1);
                         jumlahInput.value = newValue;
+                        animateQuantityChange(newValue === 1 ? 'down' : 'up');
                         if (newValue === 1) {
-                            animateQuantityChange('down');
                             showToast('Jumlah minimal pesanan adalah 1', 'warning');
-                        } else {
-                            animateQuantityChange('up'); // Animate up even on decrement if valid
                         }
                     });
 
                     jumlahInput.addEventListener('input', () => {
-                        // Ensure input is a valid positive number
                         let value = parseInt(jumlahInput.value);
                         if (isNaN(value) || value < 1) {
                             jumlahInput.value = 1;
@@ -618,90 +569,28 @@
                             showToast('Masukkan jumlah yang valid (minimal 1)', 'error');
                         }
                     });
-
-                    // Add focus styles for keyboard accessibility
-                    incrementBtn.addEventListener('focus', () => {
-                        incrementBtn.classList.add('ring-2', 'ring-pink-300');
-                    });
-                    incrementBtn.addEventListener('blur', () => {
-                        incrementBtn.classList.remove('ring-2', 'ring-pink-300');
-                    });
-                    decrementBtn.addEventListener('focus', () => {
-                        decrementBtn.classList.add('ring-2', 'ring-pink-300');
-                    });
-                    decrementBtn.addEventListener('blur', () => {
-                        decrementBtn.classList.remove('ring-2', 'ring-pink-300');
-                    });
                 }
 
                 // Phone number validation
                 let phoneValidationTimeout;
                 noWaInput?.addEventListener('input', (e) => {
                     clearTimeout(phoneValidationTimeout);
-                    const value = e.target.value;
-
-                    // Remove non-numeric characters
-                    e.target.value = value.replace(/\D/g, '');
+                    e.target.value = e.target.value.replace(/\D/g, '');
 
                     phoneValidationTimeout = setTimeout(() => {
-                        // Validates for 9 to 12 digits (after stripping +62 if present)
                         if (e.target.value && !/^\d{9,12}$/.test(e.target.value)) {
                             animateInput(e.target, 'shakeX');
                             showToast('Nomor WhatsApp harus 9-12 digit (tanpa +62)', 'error');
-                        } else {
-                            // If valid, remove error classes
-                            e.target.classList.remove('border-pink-500', 'animate__animated', 'animate__shakeX');
                         }
                     }, 500);
                 });
-
-                // Real-time required field validation for main inputs
-                [namaInput, noWaInput, alamatInput].forEach(input => {
-                    input?.addEventListener('input', () => {
-                        if (input.value.trim() === '') {
-                            input.classList.add('border-pink-500', 'animate__animated', 'animate__shakeX');
-                            // No toast here to avoid spamming, will show on submit
-                            setTimeout(() => input.classList.remove('border-pink-500', 'animate__animated', 'animate__shakeX'), 1000);
-                        } else {
-                            input.classList.remove('border-pink-500', 'animate__animated', 'animate__shakeX');
-                        }
-                    });
-                });
-
-                // Delivery method selection effects
-                if (deliveryOption && pickupOption) {
-                    // Re-apply checked styles on page load if 'old' value is set
-                    const updateRadioStyles = () => {
-                        if (pickupOption.checked) {
-                            document.querySelector('label[for="pickup"]')?.classList.add('peer-checked:border-pink-500', 'peer-checked:bg-pink-50', 'peer-checked:shadow-md');
-                            document.querySelector('label[for="delivery"]')?.classList.remove('peer-checked:border-indigo-500', 'peer-checked:bg-indigo-50', 'peer-checked:shadow-md');
-                        } else if (deliveryOption.checked) {
-                            document.querySelector('label[for="delivery"]')?.classList.add('peer-checked:border-indigo-500', 'peer-checked:bg-indigo-50', 'peer-checked:shadow-md');
-                            document.querySelector('label[for="pickup"]')?.classList.remove('peer-checked:border-pink-500', 'peer-checked:bg-pink-50', 'peer-checked:shadow-md');
-                        }
-                    };
-                    updateRadioStyles(); // Call on load
-
-                    pickupOption.addEventListener('change', () => {
-                        animateInput(document.querySelector('label[for="pickup"]'), 'pulse'); // Animate the label
-                        updateRadioStyles(); // Update colors immediately
-                    });
-
-                    deliveryOption.addEventListener('change', () => {
-                        animateInput(document.querySelector('label[for="delivery"]'), 'pulse'); // Animate the label
-                        updateRadioStyles(); // Update colors immediately
-                    });
-                }
-
+                
                 // Form submission validation
                 form?.addEventListener('submit', (e) => {
                     let hasError = false;
                     const requiredInputs = [namaInput, noWaInput, alamatInput];
-
-                    // Add quantity input if exists and is relevant (for single menu order)
                     if (jumlahInput) requiredInputs.push(jumlahInput);
 
-                    // Validate required fields
                     requiredInputs.forEach(input => {
                         if (input && input.value.trim() === '') {
                             animateInput(input, 'shakeX');
@@ -709,75 +598,43 @@
                         }
                     });
 
-                    // Specific WhatsApp number validation
                     if (noWaInput && !/^\d{9,12}$/.test(noWaInput.value)) {
                         animateInput(noWaInput, 'shakeX');
                         hasError = true;
                     }
 
-                    // Specific quantity validation if it exists and is relevant
                     if (jumlahInput && (parseInt(jumlahInput.value) < 1 || isNaN(parseInt(jumlahInput.value)))) {
                         animateInput(jumlahInput, 'shakeX');
                         hasError = true;
                     }
 
-                    // Delivery method validation
                     const deliveryMethod = document.querySelector('input[name="pengiriman"]:checked');
                     if (!deliveryMethod) {
                         hasError = true;
                         showToast('Pilih metode pengiriman terlebih dahulu', 'error');
+                        const deliverySection = document.querySelector('label[for="pickup"]').parentElement.parentElement;
+                        animateInput(deliverySection, 'shakeX');
                     }
 
                     if (hasError) {
                         e.preventDefault();
-                        // Only show generic toast if specific errors are already shown or fields are empty
-                        if (!document.querySelector('.text-pink-500.text-sm.mt-1')) {
-                             showToast('Harap lengkapi semua kolom dengan benar!', 'error');
-                        }
+                        showToast('Harap lengkapi semua kolom dengan benar!', 'error');
                     } else {
-                        // Show loading state on submit button
                         const submitBtn = form.querySelector('button[type="submit"]');
                         if (submitBtn) {
-                            submitBtn.innerHTML = '<span class="relative z-10 flex items-center"><i class="fas fa-spinner fa-spin mr-2"></i> Memproses...</span><span class="absolute inset-0 bg-gradient-to-r from-pink-600 to-indigo-700 opacity-0 group-hover:opacity-100 transition duration-300"></span>';
                             submitBtn.disabled = true;
-
-                            // Add slight delay to show the loading state
-                            setTimeout(() => {
-                                form.submit();
-                            }, 500);
+                            submitBtn.innerHTML = `<span class="relative z-10 flex items-center"><i class="fas fa-spinner fa-spin mr-2"></i> Memproses...</span>`;
                         }
                     }
                 });
 
                 // Helper function to animate inputs
                 function animateInput(element, animation) {
-                    element.classList.add('animate__animated', `animate__${animation}`);
+                    element.classList.add('border-pink-500', 'animate__animated', `animate__${animation}`);
                     setTimeout(() => {
-                        element.classList.remove('animate__animated', `animate__${animation}`);
+                        element.classList.remove('border-pink-500', 'animate__animated', `animate__${animation}`);
                     }, 1000);
                 }
-
-                // Add subtle animation to form sections when they come into view
-                const observerOptions = {
-                    threshold: 0.1
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('form > div').forEach(section => {
-                    // Only observe sections that don't have existing old() errors, to let Blade handle first render errors
-                    if (!section.querySelector('.text-pink-500.text-sm.mt-1')) {
-                        section.classList.add('opacity-0'); // Hide initially to animate in
-                        observer.observe(section);
-                    }
-                });
             });
         </script>
     </body>

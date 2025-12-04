@@ -137,7 +137,7 @@ class OrderResource extends Resource
                         ]);
 
                         // Siapkan pesan WhatsApp testimoni
-                        $formLink = 'https://docs.google.com/forms/d/e/1FAIpQLScu18SXEEiowI33xxZLaUHujKRtfn-kwAdeX8U503u4nWhwbw/viewform?usp=header'; // Ganti dengan link Google Form asli
+                        $formLink = 'https://docs.google.com/forms/d/e/1FAIpQLSekLoX8SFfpLn4kCX8gslW7Wkou-J44ZMfdvwNVJ4wwvI6SMQ/viewform?usp=dialog'; // Ganti dengan link Google Form asli
                         $pesan = urlencode(
                             "Halo *{$record->nama_pemesan}*,\n\n" .
                             "Terima kasih telah memesan *{$record->menu->nama}* di toko kami! 😊\n\n" .

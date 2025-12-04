@@ -19,7 +19,7 @@ class HomeController extends Controller
         $favoritMenus = Menu::where('is_favorit', true)->latest()->take(5)->get();
 
         // URL Google Sheets CSV yang telah di-publish
-        $csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRRX3PZqyIFFbzFj1toSLR6IviilO-ZM9wR5C7IGBf03whWHPD4NGQgEMP1ttxMHTfxNUddZpeySqer/pub?gid=2134367192&single=true&output=csv';
+        $csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQI8iTGwOM0hJ6qOukiSkC8Z4NjKQ-fqbMeY2Ob-C3znDIW6BoNOMa9Kk5b2EBdPL_PFo4_Vznvp-dE/pub?output=csv';
 
         $entries = collect(); // Default: koleksi kosong
 

@@ -53,7 +53,8 @@ Route::middleware('auth')->group(function () {
 
     // Order Routes
     Route::prefix('order')->name('order.')->group(function () {
-        Route::get('/success/{order}', [OrderController::class, 'success'])->name('invoice');
+        // FIXED: Changed '/success/{order}' to '/invoice/{order}' and the method from 'success' to 'invoice'
+        Route::get('/invoice/{order}', [OrderController::class, 'invoice'])->name('invoice');
         Route::get('/cart', [OrderController::class, 'form'])->name('cart');
         Route::post('/cart', [OrderController::class, 'submitCart'])->name('submit.cart');
         Route::get('/{menu}', [OrderController::class, 'form'])->name('form');

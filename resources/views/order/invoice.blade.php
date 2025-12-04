@@ -141,7 +141,7 @@
                             ($order->catatan ? "📝 Catatan: {$order->catatan}\n" : "") .
                             "\nMohon konfirmasinya ya 🙏"
                         );
-                        $whatsappUrl = "https://wa.me/628129181364?text=$pesan";
+                        $whatsappUrl = "https://wa.me/6281214227283?text=$pesan";
                     @endphp
 
                     <a href="{{ $whatsappUrl }}" target="_blank"

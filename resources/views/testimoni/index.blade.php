@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Testimoni - Puding by Tepuni')
+@section('title', 'Testimoni - Belle Crème Dessert')
 
 @section('content')
 <div class="bg-gradient-to-b from-pink-50 to-white min-h-screen">
